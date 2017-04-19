@@ -1,0 +1,29 @@
+<div class="compose-wrapper">
+	<div class="compose-header">
+		<div class="compose-title-container">
+			<span class="compose-title">New Message</span>
+		</div>
+		<div class="close-compose-container">
+			<span class="glyphicon glyphicon-remove close-compose"></span>
+		</div>
+	</div>
+	<div class="compose-main">
+		<div class="compose-body">
+			<div id="destinationDisplayContainer">
+				<div class="destination-label">
+					<span>Recipients</span>
+				</div>
+			</div>
+			<textarea id="messageBody" class="form-control" placeholder="Your message" oninput="textCounter(this,'counter',420);"></textarea>
+		</div>
+		<div class="compose-footer">
+			<div class="counter-wrapper">
+				<input disabled  value="Remaining: 420" id="counter">
+			</div>
+			<div class="btn-wrapper">
+				<span id="discardMessageBtn" class="glyphicon glyphicon-trash"></span>
+				<button type="button" id="sendMessageBtn" class="btn btn-green">Send</button>
+			</div>
+		</div>
+	</div>
+</div>

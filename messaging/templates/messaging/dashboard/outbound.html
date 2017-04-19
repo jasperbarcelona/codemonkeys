@@ -1,0 +1,44 @@
+{% load time_tags %}
+<div class="search-container">
+    <span class="glyphicon glyphicon-search search-icon"></span>
+    <input type="text" id="searchInbound" class="form-control search-box" placeholder="Search inbound messages">
+  </div>
+  <div>
+    <table id="outBoundTable" class="table table-fixed">
+      <tbody>
+      	<tr class="action-tr">
+          <td class="col-xs-1">
+            <div class="dropdown">
+              <button class="btn table-action-btn dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Select
+              <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                <li><a>All</a></li>
+                <li><a>None</a></li>
+                <li><a>Read</a></li>
+                <li><a>Unread</a></li>
+                <li><a>Starred</a></li>
+                <li><a>Unstarred</a></li>
+              </ul>
+            </div>
+          </td>
+          <td class="col-xs-1">
+            <button class="btn table-action-btn"><span class="glyphicon glyphicon-refresh"></span></button>
+          </td>
+        </tr>
+        {% for message in messages %}
+        <tr>
+          <td class="col-xs-1 action-td">
+            <input type="checkbox">
+            <input type="checkbox" class="glyphicon glyphicon-star-empty favorite-btn">
+          </td>
+          <td class="col-xs-2">{{message.destination_msisdn}}</td>
+          <td class="col-xs-5 ellipsis">{{message.message}}</td>
+          <td class="col-xs-2 ">{% get_date message.timestamp %}</td>
+          <td class="col-xs-2 align-right padded-right">{% get_time message.timestamp %}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>

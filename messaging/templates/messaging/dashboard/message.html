@@ -1,0 +1,61 @@
+{% load time_tags %}
+<div class="message-container">
+	<div class="message-upper-container">
+		{% if type == 'InboundMessage' %}
+		<button class="btn message-action-btn back-btn" onclick="show_inbound_messages()"><span class="glyphicon glyphicon-arrow-left"></span><span class="back-btn-label">Back</span></button>
+		{% else %}
+		<button class="btn message-action-btn back-btn" onclick="show_outbound_messages()"><span class="glyphicon glyphicon-arrow-left"></span><span class="back-btn-label">Back</span></button>
+		{% endif %}
+	</div>
+	<div class="message-header">
+		<div>
+			<!-- <span class="message-label">From: </span> -->
+			<span class="message-label">Started on April 14, 2017 | 04:20 PM</span>
+			<!-- <br /> -->
+			<!-- <span class="message-date">{% get_date message.timestamp %} | {% get_time message.timestamp %}</span> -->
+		</div>
+		<div class="align-right">
+			<button type="button" class="btn message-action-btn reply-btn">Reply</button>
+			<button type="button" class="btn message-action-btn">Save Contact</button>
+			<button type="button" class="btn message-action-btn">Add Tags</button>
+		</div>
+	</div>
+	<div class="convo-container">
+		<div class="convo-item">
+			<div class="convo-header">
+				<div>
+					<span class="convo-item-origin">{{message.origin_msisdn}}</span>
+				</div>
+				<div class="align-right">
+					<span class="convo-item-date">{% get_date message.timestamp %} | {% get_time message.timestamp %}</span>
+				</div>
+			</div>
+			<p>{{message.message}}</p>
+		</div>
+		<div class="convo-item">
+			<div class="convo-header">
+				<div>
+					<span class="convo-item-origin">Jasper Barcelona</span>
+				</div>
+				<div class="align-right">
+					<span class="convo-item-date">April 15, 2017 | 09:10 AM</span>
+				</div>
+			</div>
+			<p>{{message.message}}This is another test message.This is another test message.This is another test message.This is another test message.This is another test message.This is another test message.This is another test message.This is another test message.This is another test message.This is another test message.</p>
+		</div>
+	</div>
+	<div class="reply-container">
+		<textarea class="form-control reply-text" placeholder="Write your reply here"></textarea>
+		<div class="reply-btn-container align-right">
+			<button type="button" class="btn message-action-btn" disabled>Send</button>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+	(function() {
+	  $('.reply-btn').on('click', function(){
+        $('.reply-text').focus();
+	  });
+	})();
+</script>
